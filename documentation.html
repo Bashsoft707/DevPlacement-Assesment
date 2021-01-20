@@ -1,21 +1,100 @@
 <!DOCTYPE html><html lang="en">
 <!-- Mirrored from randomuser.me/documentation by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Jan 2021 21:22:50 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
-<head><title>Random User Generator | Documentation</title><meta charset='utf-8'><meta name="description" content="Random user generator is a FREE API for generating placeholder user information. Get profile photos, names, and more. It's like Lorem Ipsum, for people."><meta name="apple-mobile-web-app-capable" content="yes"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><link rel="stylesheet" type="text/css" href="dist/style.css"><script src="dist/all.js" type="59e1942325b7403f8f70702b-text/javascript"></script></head><body class="documentation"><div id="navbar" class=""><div class="nav_toggle"><div class="icon"><div></div><div></div><div></div></div></div><ul><li><a href="index.html">Home</a></li><li><a href="photos.html">User Photos</a></li><li><a href="documentation.html">Documentation</a></li><li><a href="changelog.html">Change Log</a></li><li><a href="stats.html">Stats &amp; Graphs</a></li><li><a href="donate.html">Donate</a></li><li><a href="copyright.html">Copyright Notice</a></li><li class="blank"></li><li><a href="photoshop.html">Photoshop Extension</a></li></ul></div><header class="subpage"><h1>Documentation</h1><p>Documentation for the Random User Generator API</p><a href="https://twitter.com/randomapi" class="twitter"><img src="img/twitter.png">Follow us @randomapi</a></header><div class="frame"><section class="glossary"><ul><li><a href="#intro">Introduction</a></li><li><a href="#howto">How to use</a></li><li><a href="#results">Results</a></li><li><a href="#errors">Error Handling</a></li><li><a href="#multiple">Requesting multiple users</a></li><li><a href="#gender">Specifying a gender</a></li><li><a href="#passwords">Passwords</a></li></ul><ul><li><a href="#seeds">Seeds</a></li><li><a href="#format">Formats</a></li><li><a href="#previous">Versioning</a></li><li><a href="#nationalities">Nationalities</a></li><li><a href="#pagination">Pagination</a></li><li><a href="#incexc">Including/Excluding fields</a></li><li><a href="#misc">Miscellaneous</a></li></ul></section><section class="advertisement"><script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="59e1942325b7403f8f70702b-text/javascript"></script><ins class="adsbygoogle" style="display:inline-block;width:230px;height:200px" data-ad-client="ca-pub-2036801804961954" data-ad-slot="7646598623"></ins><script type="59e1942325b7403f8f70702b-text/javascript">(adsbygoogle = window.adsbygoogle || []).push({});</script><ins class="adsbygoogle" style="display:inline-block;width:230px;height:200px;margin:0 16px;" data-ad-client="ca-pub-2036801804961954" data-ad-slot="7646598623"></ins><script type="59e1942325b7403f8f70702b-text/javascript">(adsbygoogle = window.adsbygoogle || []).push({});</script><ins class="adsbygoogle" style="display:inline-block;width:230px;height:200px" data-ad-client="ca-pub-2036801804961954" data-ad-slot="7646598623"></ins><script type="59e1942325b7403f8f70702b-text/javascript">(adsbygoogle = window.adsbygoogle || []).push({});</script></section><section id="intro"><h2>Introduction</h2><p>In August 2013, we set out with a goal to create a free and easy to use service to generate random user data for application testing.</p></section><section id="howto"><h2>How to use</h2><p>You can use AJAX to call the Random User Generator API and will receive a randomly generated user in return. If you are using jQuery, you can use the $.ajax() function in the code snippet below to get started.</p><pre>$.ajax({
-  url: '<span>https://randomuser.me/api/</span>',
-  dataType: '<span>json</span>',
-  success: function(<span>data</span>) {
-    console.log(<span>data</span>);
-  }
-});
-      </pre></section><section id="results"><h2>Results</h2><p>The API will provide you with a <a href="#format">formatted</a> object of your choice that you can parse and apply to your application.</p><p>JSON is the default format. You can request a different format using the <a href="#format">format parameter</a>.<pre>{
+<head>
+  <title>Random User Generator | Documentation</title>
+  <meta charset='utf-8'>
+  <meta name="description" content="Random user generator is a FREE API for generating placeholder user information. 
+  Get profile photos, names, and more. It's like Lorem Ipsum, for people.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="all.js" type="59e1942325b7403f8f70702b-text/javascript"></script>
+</head>
+<body class="documentation">
+  <div id="navbar" class="">
+    <div class="nav_toggle">
+      <div class="icon"><div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="photos.html">User Photos</a></li>
+        <li><a href="documentation.html">Documentation</a></li>
+        <li><a href="changelog.html">Change Log</a></li>
+        <li><a href="stats.html">Stats &amp; Graphs</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="copyright.html">Copyright Notice</a></li>
+        <li class="blank"></li><li><a href="photoshop.html">Photoshop Extension</a></li>
+      </ul>
+    </div>
+    <header class="subpage">
+      <h1>Documentation</h1>
+      <p>Documentation for the Random User Generator API</p>
+      <a href="https://twitter.com/randomapi" class="twitter"><img src="img/twitter.png">Follow us @randomapi</a>
+    </header>
+    <div class="frame">
+      <section class="glossary">
+        <ul>
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#howto">How to use</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#errors">Error Handling</a></li>
+          <li><a href="#multiple">Requesting multiple users</a></li>
+          <li><a href="#gender">Specifying a gender</a></li>
+          <li><a href="#passwords">Passwords</a></li>
+        </ul>
+        <ul>
+          <li><a href="#seeds">Seeds</a></li>
+          <li><a href="#format">Formats</a></li>
+          <li><a href="#previous">Versioning</a></li>
+          <li><a href="#nationalities">Nationalities</a></li>
+          <li><a href="#pagination">Pagination</a></li>
+          <li><a href="#incexc">Including/Excluding fields</a></li>
+          <li><a href="#misc">Miscellaneous</a></li>
+        </ul>
+      </section>
+      <section class="advertisement">
+        <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="59e1942325b7403f8f70702b-text/javascript"></script>
+        <ins class="adsbygoogle" style="display:inline-block;width:230px;height:200px" data-ad-client="ca-pub-2036801804961954" data-ad-slot="7646598623"></ins>
+        <script type="59e1942325b7403f8f70702b-text/javascript">(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <ins class="adsbygoogle" style="display:inline-block;width:230px;height:200px;margin:0 16px;" data-ad-client="ca-pub-2036801804961954" data-ad-slot="7646598623"></ins>
+        <script type="59e1942325b7403f8f70702b-text/javascript">(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <ins class="adsbygoogle" style="display:inline-block;width:230px;height:200px" data-ad-client="ca-pub-2036801804961954" data-ad-slot="7646598623"></ins>
+        <script type="59e1942325b7403f8f70702b-text/javascript">(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </section>
+      <section id="intro">
+        <h2>Introduction</h2>
+        <p>In August 2013, we set out with a goal to create a free and easy to use service to generate random user data for application testing.</p>
+      </section>
+      <section id="howto">
+        <h2>How to use</h2>
+        <p>You can use AJAX to call the Random User Generator API and will receive a randomly generated user in return. If you are using jQuery, you can use the $.ajax() 
+          function in the code snippet below to get started.
+        </p>
+    <pre>$.ajax({
+          url: '<span>https://randomuser.me/api/</span>',
+          dataType: '<span>json</span>',
+          success: function(<span>data</span>) {
+            console.log(<span>data</span>);
+          }
+        });
+      </pre>
+    </section>
+    <section id="results">
+      <h2>Results</h2>
+      <p>The API will provide you with a 
+        <a href="#format">formatted</a> 
+        object of your choice that you can parse and apply to your application.
+      </p>
+      <p>JSON is the default format. You can request a different format using the 
+        <a href="#format">format parameter</a>.
+        <pre>{
   "results": [
     {
       "gender": "<span>male</span>",
       "name": {
         "title": "<span>mr</span>",
         "first": "<span>brad</span>",
-        "last": "<span>gibson</span>"
+        "last": "<span>gibson</span>" 
       },
       "location": {
         "street": "<span>9278 new road</span>",
@@ -73,10 +152,32 @@
 </pre></section><section id="errors"><h2>API Errors</h2><p>If our API service is offline or if we are experiencing server issues, we'll return a simple JSON object with an error.<pre>{
   error: <span>"Uh oh, something has gone wrong. Please tweet us @randomapi about the issue. Thank you."</span>
 }
-</pre></section><section id="multiple"><h2>Requesting Multiple Users</h2><p>Random User Generator allows you to fetch up to 5,000 generated users in one request using the <b>results</b> parameter.</p><pre>https://randomuser.me/api/<span>?results=5000</span>
-</pre></section><section id="gender"><h2>Specifying a gender</h2><p>You can specify whether you would like to have only male or only female users generated by adding the <b>gender</b> parameter to your request. Valid values for the gender parameter are "male" or "female", or you may leave the parameter blank. Any other value will cause the service to return both male and female users.</p><pre>https://randomuser.me/api/<span>?gender=female</span>
-</pre></section><section id="passwords"><h2>Passwords</h2><p>By default, passwords are chosen randomly from a list of ~10k top used passwords. Starting with version 1.1, you can have more control over how passwords are generated using the <span>password</span> option.</p><pre>https://randomuser.me/api/<span>?password=upper,lower,1-16</span>
-</pre><p>The example above would generate a password consisting of uppercase and lowercase characters ranging between 1 to 16 characters long.<br><br>You can specify options for the passwords using this format:</p><pre>https://randomuser.me/api/<span>?password=CHARSETS,MIN_LENGTH-MAX_LENGTH</span>
+</pre>
+</section>
+<section id="multiple">
+  <h2>Requesting Multiple Users</h2>
+  <p>Random User Generator allows you to fetch up to 5,000 generated users in one request using the <b>results</b> parameter.</p>
+  <pre>https://randomuser.me/api/
+    <span>?results=5000</span>
+  </pre>
+</section>
+<section id="gender">
+  <h2>Specifying a gender</h2>
+  <p>You can specify whether you would like to have only male or only female users generated by adding the <b>gender</b> parameter to your request. Valid values for the gender parameter are "male" or "female", or you may leave the parameter blank. 
+    Any other value will cause the service to return both male and female users.
+  </p>
+  <pre>https://randomuser.me/api/<span>?gender=female</span></pre>
+</section>
+<section id="passwords">
+  <h2>Passwords</h2>
+  <p>By default, passwords are chosen randomly from a list of ~10k top used passwords. Starting with version 1.1, you can have more control over how passwords are generated using the 
+    <span>password</span> option.
+  </p>
+  <pre>https://randomuser.me/api/
+    <span>?password=upper,lower,1-16</span>
+</pre>
+<p>The example above would generate a password consisting of uppercase and lowercase characters ranging between 1 to 16 characters long.<br><br>
+  You can specify options for the passwords using this format:</p><pre>https://randomuser.me/api/<span>?password=CHARSETS,MIN_LENGTH-MAX_LENGTH</span>
 OR
 https://randomuser.me/api/<span>?password=CHARSETS,MAX_LENGTH</span>
 </pre><p>You can mix and match the charsets below for the CHARSETS option above:</p><pre>special    !"#$%&'()*+,- ./:;<=><a href="cdn-cgi/l/email-protection.html" class="__cf_email__" data-cfemail="407f00">[email&#160;protected]</a>[\]^_`{|}~
